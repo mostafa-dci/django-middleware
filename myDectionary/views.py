@@ -13,12 +13,12 @@ def addWord(req):
     if req.method == "GET":
         return HttpResponse(loader.get_template('pages/addWord.html').render(context={"pageName": "Add Word", "form": WordForm()}, request=req))
     else:# For POST Request
-        print(req.POST.get("german"))
-        english = req.POST.get('english')
-        german = req.POST.get("german")
-        mo = req.POST.get("mostafa")
-        print(mo)
-        if german == "" or english == "":
-            return HttpResponse("ERROR")
-        else:
+        # Store the new word
+        wordForm = WordForm(req.POST)
+        if wordForm.is_valid():
+            # Store
+            wordForm.save()
             return HttpResponse("Done")
+        else:
+            return HttpResponse("ERROR, Not saved")
+        

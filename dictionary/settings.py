@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'myDectionary.middlewares.myMiddleware.requestLoggerMiddleware',
     'myDectionary.middlewares.myMiddleware.requestLoggerMiddleware2',
+    'myDectionary.middlewares.myMiddleware.checkEntries',
 ]
 
 ROOT_URLCONF = 'dictionary.urls'
@@ -83,6 +84,27 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgres',
+#         'NAME': 'dictionary',
+#         'USER': 'dictionary',
+#         'PASSWORD': "1111111111",
+
+#     }
+# }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "dictionary",
+#         "USER": "postgres",
+#         "PASSWORD": "1111111111",
+#         "HOST": "127.0.0.1",
+#         "PORT": "5432",
+#     }
+# }
 
 
 # Password validation
