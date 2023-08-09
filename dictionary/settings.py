@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'myDectionary.middlewares.myMiddleware.checkEntries',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,7 +52,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'myDectionary.middlewares.myMiddleware.requestLoggerMiddleware',
     'myDectionary.middlewares.myMiddleware.requestLoggerMiddleware2',
-    'myDectionary.middlewares.myMiddleware.checkEntries',
 ]
 
 ROOT_URLCONF = 'dictionary.urls'

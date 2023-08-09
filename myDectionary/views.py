@@ -14,6 +14,7 @@ def addWord(req):
         return HttpResponse(loader.get_template('pages/addWord.html').render(context={"pageName": "Add Word", "form": WordForm()}, request=req))
     else:# For POST Request
         # Store the new word
+        print("################")
         wordForm = WordForm(req.POST)
         if wordForm.is_valid():
             # Store
@@ -21,4 +22,7 @@ def addWord(req):
             return HttpResponse("Done")
         else:
             return HttpResponse("ERROR, Not saved")
+        
+def all(req):
+    return HttpResponse(loader.get_template('pages/all.html').render(context={"pageName": "All Words", "words": Word.objects.all()}, request=req))
         

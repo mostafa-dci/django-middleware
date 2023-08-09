@@ -36,7 +36,6 @@ def requestLoggerMiddleware2(getResponse):
 # Middleware to control /add router entries
 def checkEntries(get_response):
     def middleware(req):
-        response = get_response(req)
         # if URL is /add AND if the method is POST
         if req.path == "/add/" and req.method == "POST":
             # check if german & english NOT EMPTY
@@ -46,8 +45,9 @@ def checkEntries(get_response):
                 # send error
                 return HttpResponse("Please add word")
             if len(english) == 1 or len(german) == 1:
-                 return HttpResponse("Please add a Real word !!!")
-            return response
+                 return HttpResponse("<script> alert('Please Add a real word!!');window.location.href = '/add' </script>")
+            # No error in the request, continue to next
+            return get_response(req)
         else:
-            return response
+            return get_response(req)
     return middleware

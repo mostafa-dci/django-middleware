@@ -1,0 +1,30 @@
+{% extends "index.html" %} {% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="display-4 text-center">{{pageName}}</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-hover table-borderd text-white">
+        <thead>
+            <tr>
+                <th>English</th>
+                <th>German</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word in words %}
+            <tr>
+                <td>{{ word.english }}</td>
+                <td>{{ word.german }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
