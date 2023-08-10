@@ -11,15 +11,24 @@
     <table class="table table-hover table-borderd text-white">
         <thead>
             <tr>
+                <!-- <th>ID</th> -->
                 <th>English</th>
                 <th>German</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             {% for word in words %}
             <tr>
+                <!-- <td>{{ word.pk }}</td> -->
                 <td>{{ word.english }}</td>
                 <td>{{ word.german }}</td>
+                <td>
+                    <form action="/delete" method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

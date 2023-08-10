@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
         <form class="row gy-2 gx-3 align-items-center" action="/search" method="GET">
             <div class="col-auto">
               <label class="visually-hidden" for="autoSizingInput">Word</label>
@@ -25,6 +25,9 @@
               <button type="submit" class="btn btn-primary">Search</button>
             </div>
           </form>
+    </div>
+    <div class="col-md-4">
+        <h3>Found ({{ total }}) Results.</h3>
     </div>
 </div>
 <hr>
