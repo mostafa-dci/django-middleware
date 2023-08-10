@@ -1,0 +1,22 @@
+{% extends "index.html" %} {% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="display-4 text-center">{{pageName}}</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <!-- Form -->
+    <form action="/edit/" method="POST">
+      {% load django_bootstrap5 %} 
+      {% csrf_token %} 
+      {% bootstrap_form form %}
+      <input type="hidden" name="pk" value="{{word.id}}">
+      <button class="btn btn-lg btn-success">Save</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

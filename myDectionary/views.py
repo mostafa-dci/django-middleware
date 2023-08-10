@@ -24,7 +24,8 @@ def addWord(req):
             return HttpResponse("ERROR, Not saved")
         
 def all(req):
-    return HttpResponse(loader.get_template('pages/all.html').render(context={"pageName": "All Words", "words": Word.objects.all()}, request=req))
+    words = Word.objects.all()
+    return HttpResponse(loader.get_template('pages/all.html').render(context={"pageName": "All Words", "words": words, "total": len(words) }, request=req))
         
 
 def search(req):
@@ -55,4 +56,26 @@ def delete(req):
 
         # for i in w:
         #     print(i)
+        return HttpResponseRedirect('/all')
+    
+
+def edit(req):
+    if req.method == "GET":
+        word_id = req.GET.get("word_Id")
+        word = Word.objects.filter(pk=word_id).first()
+        form = WordForm(instance = word)
+        return HttpResponse(loader.get_template("pages/edit.html").render(context={"pageName": "Edit", "word": word ,"form":form}, request=req))
+    else:
+        word_Id = req.POST.get("pk")
+        english = req.POST.get("english")
+        german = req.POST.get("german")
+        print(word_Id)
+        """
+        The Following method works to update: 
+        """
+        # word = Word.objects.select_for_update().filter(pk = word_Id).update(english=english,german=german)
+        w = Word.objects.get(pk= word_Id)
+        w.english = english
+        w.german = german
+        w.save() 
         return HttpResponseRedirect('/all')
