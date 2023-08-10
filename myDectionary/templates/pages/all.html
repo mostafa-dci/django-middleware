@@ -24,10 +24,14 @@
                 <td>{{ word.english }}</td>
                 <td>{{ word.german }}</td>
                 <td>
-                    <form action="/delete" method="POST">
+                    <form action="/delete/" method="POST">
                         {% csrf_token %}
+                        <input type="hidden" name="word_id" value="{{word.pk}}" >
                         <button class="btn btn-danger">Delete</button>
                     </form>
+                </td>
+                <td>
+                    <button class="btn btn-warning">Edit</button>
                 </td>
             </tr>
             {% endfor %}

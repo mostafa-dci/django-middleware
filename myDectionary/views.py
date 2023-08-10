@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from .models import Word, WordForm
 # Create your views here.
@@ -46,3 +46,13 @@ def search(req):
             # for w in word:
             #     print(w)
             return HttpResponse(loader.get_template('pages/search.html').render(context={"pageName": "Search Results", "words": word, "total": len(word)}, request=req)) 
+
+def delete(req):
+    if req.method == "POST":
+        print("You ar trying to delete: "+req.POST.get('word_id'))
+        word_PK = req.POST.get('word_id')
+        Word.objects.filter(pk=word_PK).delete()
+
+        # for i in w:
+        #     print(i)
+        return HttpResponseRedirect('/all')
