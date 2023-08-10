@@ -5,13 +5,13 @@ from django.http import HttpResponse
 def requestLoggerMiddleware(getResponse):
 
     def middleware(req):
-        print("\u001b[32mMy first Middleware is working\u001b[0m")
+        # print("\u001b[32mMy first Middleware is working\u001b[0m")
         # print query
         # http://localhost:5000/?car=bmw&color=red
-        car = req.GET.get('car') # ===> bmw
-        print(car)
-        color = req.GET.get('color')
-        print(color)
+        # car = req.GET.get('car') # ===> bmw
+        # print(car)
+        # color = req.GET.get('color')
+        # print(color)
         # to dir/ explor objects in python, use dir(OBJ)
         # print(dir(req.GET))
         # for q in req.GET.items():
@@ -26,7 +26,7 @@ def requestLoggerMiddleware(getResponse):
 def requestLoggerMiddleware2(getResponse):
 
     def middleware(req):
-        print("\u001b[32mMy second Middleware is working\u001b[0m")
+        # print("\u001b[32mMy second Middleware is working\u001b[0m")
         response = getResponse(req)
 
         return response

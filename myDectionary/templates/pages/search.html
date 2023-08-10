@@ -1,0 +1,52 @@
+{% extends "index.html" %} {% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="display-4 text-center">{{pageName}}</h1>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form class="row gy-2 gx-3 align-items-center" action="/search" method="GET">
+            <div class="col-auto">
+              <label class="visually-hidden" for="autoSizingInput">Word</label>
+              <input type="text" name="q" class="form-control" id="autoSizingInput" placeholder="Word">
+            </div>
+            <div class="col-auto">
+              <div class="form-check">
+                <input class="form-check-input" name="exact" type="checkbox" id="autoSizingCheck">
+                <label class="form-check-label" for="autoSizingCheck">
+                  Exact Match
+                </label>
+              </div>
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </form>
+    </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-hover table-borderd text-white">
+        <thead>
+            <tr>
+                <th>English</th>
+                <th>German</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for word in words %}
+            <tr>
+                <td>{{ word.english }}</td>
+                <td>{{ word.german }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
